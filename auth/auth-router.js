@@ -5,14 +5,15 @@ const restrict = require("./authenticate-middleware");
 const Users = require("./auth-model")
 
 
-router.get("/users", restrict(), async(req, res, next)=>{
+router.get("/users", async(req, res, next)=>{
 
   try{
-      res.json(await Users.find())
+      res.status(200).json(await Users.find())
   }catch(err){
       next(err)
   }
 })
+
 
 router.post("/register", async (req, res, next) => {
   try {
